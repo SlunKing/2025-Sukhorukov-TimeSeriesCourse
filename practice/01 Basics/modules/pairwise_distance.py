@@ -83,9 +83,12 @@ class PairwiseDistance:
         dist_func = self._choose_distance()
 
         # Нормализуем данные если требуется
-        if self.is_normalize and self.metric != 'euclidean':
-            # Для неевклидовых метрик нормализуем вручную
-            normalized_data = np.array([z_normalize(ts) for ts in input_data])
+        if self.is_normalize:
+            if self.metric == 'euclidean':
+                normalized_data = input_data
+            else:
+                # Для неевклидовых метрик нормализуем вручную
+                normalized_data = np.array([z_normalize(ts) for ts in input_data])
         else:
             normalized_data = input_data
 

@@ -1,5 +1,5 @@
 import numpy as np
-
+from modules.utils import z_normalize
 
 def ED_distance(ts1: np.ndarray, ts2: np.ndarray) -> float:
     """
@@ -42,9 +42,9 @@ def norm_ED_distance(ts1: np.ndarray, ts2: np.ndarray) -> float:
     if len(ts1) != len(ts2):
         raise ValueError("Временные ряды должны быть одинаковой длины")
 
-        # Нормализуем временные ряды
-    ts1_norm = (ts1 - np.mean(ts1)) / np.std(ts1)
-    ts2_norm = (ts2 - np.mean(ts2)) / np.std(ts2)
+    # Нормализуем временные ряды
+    ts1_norm = z_normalize(ts1)
+    ts2_norm = z_normalize(ts2)
 
     # Вычисляем евклидово расстояние между нормализованными рядами
     norm_ed_dist = ED_distance(ts1_norm, ts2_norm)
