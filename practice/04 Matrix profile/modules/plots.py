@@ -233,7 +233,7 @@ def plot_segmentation(mp: dict, threshold: float) -> None:
                      tickwidth=2)
 
     fig.update_layout(title_font=dict(size=24, color='black'),
-                      plot_bgcolor="rgba(0,0,0,0)",
-                      paper_bgcolor='rgba(0,0,0,0)', height=700)
+                      plot_bgcolor="white",
+                      paper_bgcolor='white', height=700)
 
     fig.show(renderer="colab")
